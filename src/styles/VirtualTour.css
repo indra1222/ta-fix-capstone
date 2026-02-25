@@ -1,0 +1,445 @@
+/* ========================================
+   VIRTUAL TOUR PAGE - MODERN DESIGN
+   ======================================== */
+
+.virtual-tour-page {
+  min-height: 100vh;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 2rem 2rem;
+  font-family: var(--font-family, 'Inter', sans-serif);
+}
+
+/* Unity Canvas - High Quality Rendering */
+.unity-canvas {
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+  -ms-interpolation-mode: nearest-neighbor !important;
+  image-rendering: pixelated !important;
+  
+  /* Override to auto for smooth rendering */
+  image-rendering: auto !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  
+  /* Ensure proper scaling */
+  object-fit: contain;
+  max-width: 100%;
+  height: auto;
+  
+  /* Better rendering on high DPI displays */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.unity-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.unity-player {
+  position: relative;
+  width: 100%;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.tour-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  animation: fadeInUp 0.8s ease;
+}
+
+.tour-header h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 1.5rem;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.tour-header p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.7;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tour-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.tour-controls {
+  text-align: center;
+  padding: 3rem 0;
+  animation: fadeInUp 0.8s ease 0.2s;
+  animation-fill-mode: both;
+}
+
+.btn-back-home {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 1.125rem 2.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-back-home:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+.btn-back-home:active {
+  transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   MOBILE CONTROLS - RESPONSIVE
+   ======================================== */
+
+/* Hide mobile controls on desktop/laptop (screen width > 768px) */
+@media (min-width: 769px) {
+  .mobile-controls-container,
+  .mobile-dpad-controls,
+  .mobile-action-buttons,
+  .btn-mobile-control,
+  .btn-mobile-action,
+  .mobile-instruction {
+    display: none !important;
+  }
+  
+  /* Show only desktop instruction */
+  .desktop-instruction {
+    display: block !important;
+    margin: 0 !important;
+  }
+}
+
+/* Show mobile controls on mobile (screen width <= 768px) */
+@media (max-width: 768px) {
+  .mobile-controls-container {
+    display: block !important;
+  }
+  
+  .mobile-dpad-controls,
+  .mobile-action-buttons {
+    display: flex !important;
+  }
+  
+  .btn-mobile-control,
+  .btn-mobile-action {
+    display: inline-block !important;
+  }
+  
+  .mobile-instruction {
+    display: block !important;
+  }
+  
+  /* Hide desktop instruction on mobile */
+  .desktop-instruction {
+    display: none !important;
+  }
+}
+
+/* Mobile button styling */
+.btn-mobile-control {
+  padding: 1rem;
+  font-size: 1.5rem;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.btn-mobile-control:active {
+  background: #1565c0;
+  transform: scale(0.95);
+}
+
+.btn-mobile-action {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.btn-mobile-action:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .virtual-tour-page {
+    padding: 5rem 1.5rem 1.5rem;
+  }
+
+  .tour-header {
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+  }
+
+  .tour-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .tour-header p {
+    font-size: 1rem;
+  }
+
+  .tour-controls {
+    padding: 2rem 0;
+  }
+
+  .btn-back-home {
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tour-header h1 {
+    font-size: 2rem;
+  }
+
+  .tour-header p {
+    font-size: 0.95rem;
+  }
+
+  .btn-back-home {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ========================================
+   TOUR MODE INDICATOR
+   ======================================== */
+
+.tour-mode-indicator {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ========================================
+   TOUR FEATURE MENU
+   ======================================== */
+
+.tour-feature-menu {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeInUp 0.8s ease 0.3s;
+  animation-fill-mode: both;
+}
+
+.feature-btn {
+  padding: 1rem 1.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.feature-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+}
+
+.feature-btn.active {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
+}
+
+.feature-btn-primary {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+  animation: glow 2s infinite;
+}
+
+.feature-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* ========================================
+   INSPECT INFO PANEL
+   ======================================== */
+
+.tour-container {
+  position: relative;
+}
+
+.inspect-info-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 300px;
+  color: #ffffff;
+  animation: slideInRight 0.5s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.inspect-info-panel h3 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.inspect-info-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inspect-info-panel li {
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inspect-info-panel li:last-child {
+  border-bottom: none;
+}
+
+.inspect-info-panel li::before {
+  content: '● ';
+  color: #ffffff;
+  margin-right: 0.5rem;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN FOR NEW FEATURES
+   ======================================== */
+
+@media (max-width: 768px) {
+  .tour-feature-menu {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .feature-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1.25rem;
+  }
+
+  .inspect-info-panel {
+    position: static;
+    max-width: 100%;
+    margin: 1rem;
+  }
+
+  .tour-mode-indicator {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
